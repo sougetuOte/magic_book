@@ -1,0 +1,208 @@
+/* App.css */
+
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-header {
+  background-color: #2c3e50;
+  color: white;
+  padding: 1rem;
+}
+
+.app-header h1 {
+  margin: 0;
+}
+
+.app-header nav ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.app-header nav ul li {
+  display: inline;
+  margin-right: 1rem;
+}
+
+.app-header nav ul li a {
+  color: white;
+  text-decoration: none;
+}
+
+main {
+  flex: 1;
+  padding: 2rem;
+}
+
+.diary-list {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.diary-list ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.diary-item {
+  cursor: pointer;
+  padding: 0.8rem;
+  border-bottom: 1px solid #eee;
+  display: flex;
+  align-items: center;
+  transition: background-color 0.2s;
+}
+
+.diary-item:hover {
+  background-color: #f5f5f5;
+}
+
+.diary-item:active {
+  background-color: #e0e0e0;
+}
+
+.diary-date {
+  flex: 0 0 120px;
+  font-weight: bold;
+}
+
+.diary-title {
+  flex: 1;
+  margin-left: 1rem;
+}
+
+.diary-weather, .diary-constellation {
+  flex: 0 0 80px;
+  text-align: center;
+  font-size: 0.9em;
+  color: #666;
+}
+
+.diary-detail {
+  background-color: white;
+  border-radius: 8px;
+  padding: 1rem;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.diary-content {
+  margin-top: 1rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 4px;
+}
+
+.practice-items {
+  margin-top: 1rem;
+}
+
+.practice-items ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.practice-items li {
+  margin-bottom: 0.5rem;
+}
+
+button {
+  background-color: #3498db;
+  color: white;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+button:hover {
+  background-color: #2980b9;
+}
+
+.app-footer {
+  background-color: #34495e;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+  margin-top: auto;
+}
+
+/* ダブルクリックで編集可能であることを示すスタイル */
+.diary-item::after {
+  content: "ダブルクリックで編集";
+  position: absolute;
+  right: 10px;
+  font-size: 0.8em;
+  color: #999;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+
+.diary-item:hover::after {
+  opacity: 1;
+}
+
+/* ローディング表示のスタイル */
+.loading {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  font-size: 1.2em;
+  color: #3498db;
+}
+
+/* エラーメッセージのスタイル */
+.error-message {
+  background-color: #e74c3c;
+  color: white;
+  padding: 1rem;
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+/* 新規作成ボタンのスタイル */
+.create-new-button {
+  margin-bottom: 1rem;
+}
+
+/* フォームのスタイル */
+form div {
+  margin-bottom: 1rem;
+}
+
+label {
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+input[type="text"],
+input[type="date"],
+textarea {
+  width: 100%;
+  padding: 0.5rem;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+}
+
+textarea {
+  height: 150px;
+}
+
+/* バリデーションエラーのスタイル */
+.validation-error {
+  color: #e74c3c;
+  font-size: 0.9em;
+  margin-top: 0.2rem;
+}

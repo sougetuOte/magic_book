@@ -1,0 +1,10 @@
+以前の作業の引継書を確認してください。これは flask-react-app ディレクトリ内の HANDOVER.md ファイルに保存されています。ファイルの内容は以下の通りです：
+HANDOVER.mdの場所はC:\work\magic_book\flask-react-app\HANDOVER.mdです。今後のファイル探索などではこれを参照してください。
+また作業リストについてはC:\work\magic_book\flask-react-app\TASK_PLAN.mdを参照してください。
+仮想環境venvのフォルダはC:\work\magic_book\flask-react-app\backend\venvです。
+作業に使われるプロンプトはPowerShellのためコマンドの接続に&&が使えません。注意してください。
+<handover>
+[HANDOVER.mdの内容をここに貼り付ける]
+</handover>
+
+この情報を基に、プロジェクトの現状を理解し、次のタスクに取り組んでください。質問や追加の情報が必要な場合は、お知らせください。
