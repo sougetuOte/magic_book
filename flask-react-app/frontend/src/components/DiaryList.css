@@ -1,0 +1,129 @@
+.diary-list {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.diary-list h2 {
+  color: #333;
+  margin-bottom: 20px;
+}
+
+.loading-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.loading-spinner {
+  border: 4px solid #f3f3f3;
+  border-top: 4px solid #3498db;
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.loading-overlay p {
+  color: white;
+  margin-top: 10px;
+}
+
+.error-message {
+  background-color: #ffebee;
+  color: #c62828;
+  border: 1px solid #ef9a9a;
+  padding: 10px;
+  border-radius: 4px;
+  margin-bottom: 20px;
+}
+
+.create-new-button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  margin-bottom: 20px;
+}
+
+.create-new-button:hover {
+  background-color: #45a049;
+}
+
+.no-diaries-message {
+  text-align: center;
+  color: #666;
+  font-style: italic;
+}
+
+.diary-items {
+  list-style-type: none;
+  padding: 0;
+}
+
+.diary-item {
+  background-color: white;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 10px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.diary-item:hover {
+  background-color: #f0f0f0;
+}
+
+.diary-date {
+  font-weight: bold;
+  margin-right: 10px;
+}
+
+.diary-title {
+  color: #333;
+}
+
+.diary-weather,
+.diary-constellation {
+  color: #666;
+  font-size: 0.9em;
+  margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+  .diary-list {
+    padding: 10px;
+  }
+
+  .diary-item {
+    flex-direction: column;
+  }
+
+  .diary-date,
+  .diary-title,
+  .diary-weather,
+  .diary-constellation {
+    margin: 5px 0;
+  }
+}

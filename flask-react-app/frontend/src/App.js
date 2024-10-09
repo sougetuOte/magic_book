@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import DiaryList from './components/DiaryList';
 import DiaryDetail from './components/DiaryDetail';
 import Header from './components/Header';
@@ -9,17 +9,19 @@ function App() {
   const [selectedDiaryId, setSelectedDiaryId] = useState(null);
   const [isCreating, setIsCreating] = useState(false);
   const [isEditing, setIsEditing] = useState(false);
+  const [refreshList, setRefreshList] = useState(false);
 
   const handleDiarySelect = (id) => {
     setSelectedDiaryId(id);
     setIsEditing(false);
   };
 
-  const handleDiaryClose = () => {
+  const handleDiaryClose = useCallback(() => {
     setSelectedDiaryId(null);
     setIsCreating(false);
     setIsEditing(false);
-  };
+    setRefreshList(prev => !prev); // リストを更新するためのトリガー
+  }, []);
 
   const handleCreateNew = () => {
     setSelectedDiaryId(null);
@@ -31,9 +33,15 @@ function App() {
     setIsEditing(true);
   };
 
+  const handleHomeClick = () => {
+    setSelectedDiaryId(null);
+    setIsCreating(false);
+    setIsEditing(false);
+  };
+
   return (
     <div className="App">
-      <Header />
+      <Header onHomeClick={handleHomeClick} onNewDiaryClick={handleCreateNew} />
       <main>
         {isCreating ? (
           <DiaryDetail onClose={handleDiaryClose} />
@@ -49,6 +57,7 @@ function App() {
             onDiarySelect={handleDiarySelect} 
             onCreateNew={handleCreateNew}
             onDiaryEdit={handleEditDiary}
+            refreshTrigger={refreshList}
           />
         )}
       </main>

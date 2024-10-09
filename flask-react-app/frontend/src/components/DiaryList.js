@@ -1,13 +1,14 @@
 import React, { useState, useEffect } from 'react';
+import './DiaryList.css';
 
-const DiaryList = ({ onDiarySelect, onCreateNew, onDiaryEdit }) => {
+const DiaryList = ({ onDiarySelect, onCreateNew, onDiaryEdit, refreshTrigger }) => {
   const [diaries, setDiaries] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState(null);
 
   useEffect(() => {
     fetchDiaries();
-  }, []);
+  }, [refreshTrigger]); // refreshTrigger が変更されたときにリストを更新
 
   const fetchDiaries = async () => {
     try {
@@ -39,17 +40,27 @@ const DiaryList = ({ onDiarySelect, onCreateNew, onDiaryEdit }) => {
     return date.toLocaleDateString('ja-JP', { year: 'numeric', month: '2-digit', day: '2-digit' });
   };
 
-  if (isLoading) return <div className="loading">読み込み中...</div>;
-  if (error) return <div className="error-message">{error}</div>;
+  if (isLoading) {
+    return (
+      <div className="loading-overlay">
+        <div className="loading-spinner"></div>
+        <p>日記を読み込んでいます...</p>
+      </div>
+    );
+  }
+
+  if (error) {
+    return <div className="error-message">{error}</div>;
+  }
 
   return (
     <div className="diary-list">
       <h2>日記一覧</h2>
       <button onClick={onCreateNew} className="create-new-button">新規作成</button>
       {diaries.length === 0 ? (
-        <p>日記がありません。新しい日記を作成してください。</p>
+        <p className="no-diaries-message">日記がありません。新しい日記を作成してください。</p>
       ) : (
-        <ul>
+        <ul className="diary-items">
           {diaries.map((diary) => (
             <li 
               key={diary.id} 
