@@ -5,12 +5,18 @@ function Start-Backend {
     Write-Host "バックエンド（Flask）を起動中..."
     Set-Location -Path ".\backend"
     try {
-        .\venv\Scripts\Activate.ps1
+        # venvが存在する場合はアクティベート
+        if (Test-Path ".\venv\Scripts\Activate.ps1") {
+            .\venv\Scripts\Activate.ps1
+        }
         python main.py
     }
     catch {
         Write-Host "エラー: バックエンドの起動に失敗しました。" -ForegroundColor Red
         Write-Host $_.Exception.Message
+    }
+    finally {
+        Set-Location -Path ".."
     }
 }
 
@@ -24,6 +30,9 @@ function Start-Frontend {
     catch {
         Write-Host "エラー: フロントエンドの起動に失敗しました。" -ForegroundColor Red
         Write-Host $_.Exception.Message
+    }
+    finally {
+        Set-Location -Path ".."
     }
 }
 

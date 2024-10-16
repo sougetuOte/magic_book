@@ -8,9 +8,11 @@ from sqlalchemy.exc import SQLAlchemyError
 from datetime import datetime
 from werkzeug.utils import secure_filename
 
-load_dotenv()  # .env ファイルから環境変数を読み込む
+# .env ファイルから環境変数を読み込む
+load_dotenv(os.path.join(os.path.dirname(__file__), '..', '.env'))
 
-UPLOAD_FOLDER = 'uploads'
+# UPLOAD_FOLDERを絶対パスに変更
+UPLOAD_FOLDER = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'uploads')
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 
 def allowed_file(filename):

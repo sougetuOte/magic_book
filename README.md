@@ -21,7 +21,7 @@
 
 ### 環境変数の設定
 
-1. `flask-react-app/backend/.env` ファイルを作成し、以下の内容を追加します:
+1. プロジェクトのルートディレクトリに `.env` ファイルを作成し、以下の内容を追加します:
    ```
    FLASK_APP=main.py
    FLASK_ENV=development
@@ -30,16 +30,11 @@
    JWT_SECRET_KEY=your_jwt_secret_key_here
    ```
 
-2. `flask-react-app/frontend/.env` ファイルを作成し、以下の内容を追加します:
-   ```
-   REACT_APP_API_URL=http://localhost:5000/api
-   ```
-
 ### データベースの初期化
 
 1. バックエンドディレクトリに移動:
    ```
-   cd flask-react-app/backend
+   cd backend
    ```
 
 2. 仮想環境の作成と有効化:
@@ -62,7 +57,7 @@
 
 1. PowerShellを開き、プロジェクトのルートディレクトリに移動します:
    ```
-   cd path\to\flask-react-app
+   cd path\to\magic_book
    ```
 
 2. 以下のコマンドを実行してスクリプトを起動します:
@@ -82,7 +77,7 @@
 起動:
 1. バックエンドディレクトリに移動:
    ```
-   cd flask-react-app/backend
+   cd backend
    ```
 
 2. 仮想環境の有効化（まだ有効化していない場合）:
@@ -109,7 +104,7 @@
 起動:
 1. 新しいターミナルを開き、フロントエンドディレクトリに移動:
    ```
-   cd flask-react-app/frontend
+   cd frontend
    ```
 
 2. 必要な npm パッケージのインストール（初回のみ）:
