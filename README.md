@@ -21,14 +21,22 @@
 
 ### 環境変数の設定
 
-1. プロジェクトのルートディレクトリに `.env` ファイルを作成し、以下の内容を追加します:
+1. プロジェクトのルートディレクトリにある `.env.sample` ファイルを `.env` にコピーします:
+   ```
+   cp .env.sample .env
+   ```
+
+2. `.env` ファイルを開き、必要に応じて値を変更します。特に、`SECRET_KEY` と `JWT_SECRET_KEY` は必ず変更してください:
    ```
    FLASK_APP=main.py
-   FLASK_ENV=development
+   FLASK_DEBUG=True
    DATABASE_URL=sqlite:///magic_diary.db
-   SECRET_KEY=your_secret_key_here
-   JWT_SECRET_KEY=your_jwt_secret_key_here
+   SECRET_KEY=your_unique_secret_key_here
+   JWT_SECRET_KEY=your_unique_jwt_secret_key_here
+   UPLOAD_FOLDER=uploads
    ```
+
+   注意: `SECRET_KEY` と `JWT_SECRET_KEY` には、それぞれユニークで強力な文字列を使用してください。
 
 ### データベースの初期化
 
