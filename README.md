@@ -28,7 +28,7 @@
 
 2. `.env` ファイルを開き、必要に応じて値を変更します。特に、`SECRET_KEY` と `JWT_SECRET_KEY` は必ず変更してください:
    ```
-   FLASK_APP=main.py
+   FLASK_APP=app/main.py
    FLASK_DEBUG=True
    DATABASE_URL=sqlite:///magic_diary.db
    SECRET_KEY=your_unique_secret_key_here
@@ -38,17 +38,17 @@
 
    注意: `SECRET_KEY` と `JWT_SECRET_KEY` には、それぞれユニークで強力な文字列を使用してください。
 
-### データベースの初期化
+### バックエンド環境のセットアップ
 
-1. バックエンドディレクトリに移動:
+1. プロジェクトのルートディレクトリから、バックエンドディレクトリに移動:
    ```
-   cd backend
+   cd C:\work\magic_book\backend
    ```
 
 2. 仮想環境の作成と有効化:
    ```
    python -m venv venv
-   venv\Scripts\activate
+   .\venv\Scripts\Activate.ps1
    ```
 
 3. 必要なパッケージのインストール:
@@ -61,11 +61,23 @@
    flask init-db
    ```
 
+### フロントエンド環境のセットアップ
+
+1. 新しいターミナルを開き、フロントエンドディレクトリに移動:
+   ```
+   cd C:\work\magic_book\frontend
+   ```
+
+2. 必要な npm パッケージのインストール:
+   ```
+   npm install
+   ```
+
 ### 統合起動スクリプトの使用
 
 1. PowerShellを開き、プロジェクトのルートディレクトリに移動します:
    ```
-   cd path\to\magic_book
+   cd C:\work\magic_book
    ```
 
 2. 以下のコマンドを実行してスクリプトを起動します:
@@ -85,17 +97,17 @@
 起動:
 1. バックエンドディレクトリに移動:
    ```
-   cd backend
+   cd C:\work\magic_book\backend
    ```
 
 2. 仮想環境の有効化（まだ有効化していない場合）:
    ```
-   venv\Scripts\activate
+   .\venv\Scripts\Activate.ps1
    ```
 
 3. Flask アプリケーションの実行:
    ```
-   python main.py
+   python app/main.py
    ```
 
    バックエンドは `http://localhost:5000` で起動します。
@@ -112,15 +124,10 @@
 起動:
 1. 新しいターミナルを開き、フロントエンドディレクトリに移動:
    ```
-   cd frontend
+   cd C:\work\magic_book\frontend
    ```
 
-2. 必要な npm パッケージのインストール（初回のみ）:
-   ```
-   npm install
-   ```
-
-3. React 開発サーバーの起動:
+2. React 開発サーバーの起動:
    ```
    npm start
    ```
@@ -136,6 +143,42 @@
 ## アプリケーションへのアクセス
 
 バックエンドとフロントエンドの両方が起動したら、ウェブブラウザで `http://localhost:3000` を開きます。魔術日記アプリケーションのインターフェースが表示されるはずです。
+
+## トラブルシューティング
+
+1. 仮想環境の問題
+   - 症状: `pip` や `python` コマンドが正しく動作しない
+   - 解決策: 仮想環境が正しく有効化されているか確認。以下のコマンドで再度有効化:
+     ```
+     .\venv\Scripts\Activate.ps1
+     ```
+
+2. パッケージのインストール失敗
+   - 症状: `pip install -r requirements.txt` が失敗する
+   - 解決策: 
+     1. pip を最新版にアップグレード: `python -m pip install --upgrade pip`
+     2. 個別のパッケージを手動でインストール
+
+3. データベース初期化エラー
+   - 症状: `flask init-db` コマンドがエラーを返す
+   - 解決策: 
+     1. .env ファイルの DATABASE_URL が正しいか確認
+     2. データベースファイルの権限を確認
+
+4. フロントエンドの起動失敗
+   - 症状: `npm start` がエラーを返す
+   - 解決策:
+     1. node_modules を削除し、`npm install` を再実行
+     2. package.json の依存関係を確認し、必要に応じて更新
+
+5. バックエンドとフロントエンドの接続問題
+   - 症状: フロントエンドがバックエンドのAPIにアクセスできない
+   - 解決策:
+     1. バックエンドが正しいポートで起動しているか確認
+     2. CORS設定を確認
+     3. フロントエンドの API URL 設定を確認
+
+開発中に問題が発生した場合は、まずこれらの一般的な解決策を試してください。問題が解決しない場合は、エラーメッセージと実行環境の詳細を記録し、開発チームに報告してください。
 
 ## 開発状況
 
@@ -154,16 +197,18 @@
 
 ## 今後の開発計画
 
-1. 画像管理機能のフロントエンド統合
-2. ユーザー認証機能の実装
-3. 検索・フィルター機能の追加
-4. テストの実装
-5. パフォーマンスの最適化とセキュリティの強化
+1. フロントエンドとバックエンドの統合テスト
+2. 画像管理機能のフロントエンド統合
+3. ユーザー認証機能の実装
+4. 検索・フィルター機能の追加
+5. テストの実装と拡充
+6. パフォーマンスの最適化とセキュリティの強化
 
 ## 開発
 
-- Flask バックエンドのメインコードは `backend/main.py` にあります。
-- データベースモデルは `backend/models.py` にあります。
+- Flask バックエンドのメインコードは `backend/app/main.py` にあります。
+- データベースモデルは `backend/app/models.py` にあります。
+- バックエンドのテストファイルは `backend/tests/test_main.py` にあります。
 - React フロントエンドのメインコードは `frontend/src/App.js` にあります。
 - コンポーネントは `frontend/src/components/` ディレクトリにあります。
 
